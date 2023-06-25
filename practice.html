@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Do</title>
+ <!-- Compiled and minified CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+ <!--Alpine-->
+<script src="//unpkg.com/alpinejs" defer></script> 
+
+</head>
+<body class="container mt-4 mb-4">
+<div class="bg-danger border border-dark p-3 rounded" style="--bs-bg-opacity: .05;">
+    
+<div class="row mt-4 mb-4">
+            <div class="col-sm" style="width: 50px;">
+<div x-data="{ title: 'Hello Alpine' }">
+    <p x-text="title"></p>
+    <button class="btn btn-outline-primary fw-bold align-center" style="width: 100%;" @click="title='Alpine Rocks!'"><i class="bi bi-cursor-fill"></i> click me</button>
+</div>
+      </div>
+      <div class="col-sm">
+        <div x-data="{ title: 'Hello Alpine' }">
+            <p x-text="title"></p>
+            <button class="btn btn-outline-secondary fw-bold align-center" style="width: 100%;" @click="title='Alpine Rocks!'"><i class="bi bi-cursor-fill"></i> click me</button>
+        
+        </div class="mt-4 ">
+              </div>
+              </div>
+              <div x-data="{ title: 'Hello Alpine' }" class="bg-success-subtle rounded p-1 fw-bold" style="width: 50%;">
+                <p x-text="title" ></p>
+            </div>
+
+      <div class="mt-4 mb-4"> 
+        <div x-data="{ count: 1 }" class="d-flex">
+    
+    <button class="btn btn-outline-success fw-bold me-3" @click="count++"><i class="bi bi-arrow-up-circle-fill"></i> Count Up</button>
+    <p x-text="count"></p>
+    <button class="btn btn-outline-danger fw-bold align-center ms-3" @click="count--"><i class="bi bi-arrow-down-circle-fill"></i> Count Down</button>
+</div>
+      </div>
+
+     <div class=""> 
+       <div x-data="{ countdown: 60 }" 
+        x-init="setInterval(function(){
+        countdown--;
+        }, 1000);
+             ">
+             <h3>Countdown</h3>
+    <h1 x-text="countdown"></h1>
+</div>
+      </div>
+
+      <div class="mt-4 mb-4"> 
+       <div x-data="{ show: false }">
+    <button class="btn btn-outline-secondary fw-bold align-center" style="width: 50%;" @click="show=!show"><i class="bi bi-envelope-open"></i> Show</button>
+    <div x-show.transition="show">Hello</div>
+</div>
+      </div>
+
+      <div > 
+       <div x-data="{ title: 'AlpineJS is Awesome' }">
+    <p x-text="title"></p>
+    <input type="text" x-model="title" class="form-control">
+</div>
+      </div>
+
+      <div class="mt-4 mb-4"> 
+       <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+    <div x-html="code"></div>
+</div>
+      </div>
+
+      <div class=""> 
+       <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+    <div x-ref="sentence">I am a sentence</div>
+    <button class="btn bg-primary fw-bold text-white align-center" @click="$refs.sentence.innerText = 'I just changed'">Change Sentence</button>
+</div>
+      </div>
+
+      <div class="mt-4 mb-4"> 
+       <div x-data="{ socks: 'blue' }">
+    <template x-if="socks=='blue'">
+        <p>My socks are blue</p>
+    </template>
+    <template x-if="socks=='green'">
+        <p>My socks are green</p>
+    </template>
+    <button class="btn bg-primary fw-bold text-white align-center"  @click="socks = 'green'">Change Sox</button>
+</div>
+      </div>
+
+      <div class=""> 
+       <div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
+    <p>Groceries: </p>
+    <ul>
+        <template x-for="item in groceries">
+            <li x-text="item"></li>
+        </template>
+    </ul>
+</div>
+      </div>
+
+</div>
+
+<a href="counter.html" class="text-decoration-none "><button class="btn bg-primary fw-bold text-white align-center" style="width: 100%;">More counter widgets <i class="bi bi-folder2-open text-center"></i></button></a>
+</div>
+</div>
+</body>
+</html>
