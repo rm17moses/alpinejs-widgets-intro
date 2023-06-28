@@ -17,7 +17,7 @@
 
 </head>
 <body class="container mt-4 mb-4">
-  <a href="counter.html" class="text-decoration-none "><button class="btn bg-primary fw-bold text-white align-center" style="width: 100%;">More counter widgets <i class="bi bi-folder2-open text-center"></i></button></a>
+  <a href="counter.html" class="text-decoration-none "><button class="btn bg-primary fw-bold text-white align-center" style="width: 100%;">Click me to access AlpineJS counter widgets <i class="bi bi-folder2-open text-center"></i></button></a>
 
 <div class="bg-danger border border-dark p-3 rounded mt-4" style="--bs-bg-opacity: .05;">
     <h1 class="text-center">AlpineJS Introduction - making the DOM easier</h1>
@@ -25,8 +25,8 @@
     <div class="mt-4 mb-4 ">
         <h4>Creating a component</h4>
 
-          <div x-data="{ title: 'Hello Alpine' }" class="bg-success-subtle rounded p-1 fw-bold" style="width: 50%;">
-            <p x-text="title" ></p>
+          <div x-data="{ title: 'Hello Alpine', background: 'text-center pt-2 pb-2 bg-success-subtle rounded fw-bold' }" style="width: 50%;">
+            <p :class="background" x-text="title" ></p>
         </div>
         </div>
 
@@ -34,7 +34,7 @@
 <div class="row mt-4 mb-4">
 
     <div class="col-sm">
-        <div x-data="{ title: 'Hello Alpine', style: false }">
+        <div x-data="{ title: 'Hello Alpine', style: 'bg-info-subtle' }">
           <button class="btn btn-outline-primary fw-bold align-center mb-2" style="width: 100%;" @click="title='Alpine Rocks!'; style = true"><i class="bi bi-cursor-fill"></i> click me</button>
           <p :class="{ 'bg-warning bg-gradient rounded fw-bold text-white p-1 text-center': style }">
             <span x-text="title"></span>
@@ -69,7 +69,7 @@
        <div x-data="{ countdown: 60 }" 
         x-init="setInterval(function(){
         countdown--;}, 1000);">
-    <h4 x-text="countdown" class="bg-danger fw-bold text-white rounded p-1" style="width: 500px"></h4>
+    <h4 x-text="countdown" class="bg-danger fw-bold text-white rounded p-1" style="width: 20%"></h4>
 </div>
       </div>
 
@@ -91,29 +91,29 @@
 
       <div class="mt-4 mb-4"> 
         <h4>AlpineJS x-html</h4>
-       <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+       <div x-data="{ code: '<p>Dynamic Paragraph Test: <b>It works.<b></p>' }">
     <div x-html="code"></div>
 </div>
       </div>
 
       <div class=""> 
         <h4>AlpineJS x-ref</h4>
-       <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
-    <div x-ref="sentence">I am a sentence</div>
-    <button class="btn bg-primary fw-bold text-white align-center" @click="$refs.sentence.innerText = 'I just changed'">Change Sentence</button>
+       <div x-data="{ code: '<p>Dynamic Paragraph</p>', background: 'bg-warning', background2: 'bg-info fw-bold mb-2 rounded text-center' }">
+    <div :class="background2" x-ref="sentence" style="width: 50%;">I am a sentence</div>
+    <button class="btn bg-primary fw-bold align-center" :class="background" @click="$refs.sentence.innerText = 'I just changed'; background = 'bg-success text-white'">Change Sentence</button>
 </div>
       </div>
 
       <div class="mt-4 mb-4"> 
         <h4>AlpineJS x-if</h4>
-       <div x-data="{ socks: 'blue' }">
-    <template x-if="socks=='blue'">
+       <div x-data="{ socks: 'blue', background: 'bg-primary', background2: 'bg-success' }">
+    <template :class="background" x-if="socks=='blue'">
         <p>My socks are blue</p>
     </template>
-    <template x-if="socks=='green'">
+    <template  x-if="socks=='green'">
         <p>My socks are green</p>
     </template>
-    <button class="btn bg-primary fw-bold text-white align-center"  @click="socks = 'green'">Change Sox</button>
+    <button class="btn bg-primary fw-bold text-white align-center"  :class="background" @click="socks = 'green', background = background2">Change Sox</button>
 </div>
       </div>
 
